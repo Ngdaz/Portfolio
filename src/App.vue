@@ -2,11 +2,15 @@
   <transition name="fade" tag="div" class="wrapper" mode="out-in">
     <div class="wrapper" v-if="isLoaded" id="app">
       <LandingPage :user="user" />
-      <Description :user="user" :content="findSlug('description')" :links="findSlug('links')" />
+      <Description
+        :user="user"
+        :content="findSlug('description')"
+        :links="findSlug('links')"
+      />
       <Experience :content="findSlug('experiences')" />
       <Skills :content="findSlug('skills')" />
-      <Projects :content="findSlug('projects')" />
-      <Footer :user="user" :links="findSlug('links')" />
+      <!-- <Projects :content="findSlug('projects')" /> -->
+      <Footer :user="userInfor" :links="linkUser" />
     </div>
   </transition>
 </template>
@@ -16,7 +20,7 @@ import LandingPage from "./components/LandingPage.vue";
 import Description from "./components/Description.vue";
 import Experience from "./components/Experience.vue";
 import Skills from "./components/Skills.vue";
-import Projects from "./components/Projects.vue";
+// import Projects from "./components/Projects.vue";
 import Footer from "./components/Footer.vue";
 
 import { bucket } from "./cosmic.js";
@@ -28,13 +32,31 @@ export default {
     Description,
     Experience,
     Skills,
-    Projects,
+    // Projects,
     Footer,
   },
   data: () => ({
     isLoaded: false,
     user: {},
     posts: [],
+    skillUser: [],
+    userInfor: {
+      name: "Minh Anh",
+      email: "imminhanh@gmail.com",
+      phone: "(+84)945251099",
+      city: "Ha Noi",
+      lang: "French, English",
+    },
+    linkUser: {
+      slug: "links",
+      title: "links",
+      metadata: {
+        facebook: "https://www.facebook.com/minhanhneeee",
+        instagram: "https://www.instagram.com/imminhanh__/?hl=en",
+        linkedin: "https://www.linkedin.com",
+        //   github: "https://github.com/hbollon",
+      },
+    },
   }),
   methods: {
     fetchPosts() {
@@ -59,29 +81,29 @@ export default {
       });
     },
     extractFirstObject(objects) {
-      if(objects.objects == null)
-        return void 0;
-      else
-        return objects.objects[0];
-    }
+      if (objects.objects == null) return void 0;
+      else return objects.objects[0];
+    },
   },
   created() {
     document.body.classList.add("loading");
-    Promise.all([this.fetchPosts(), this.fetchUser()]).then(([posts, user_data]) => {
-      user_data = this.extractFirstObject(user_data);
-      this.posts = posts.objects;
-      this.user = {
-        name: user_data.metadata.name,
-        status: user_data.metadata.status,
-        email: user_data.metadata.email,
-        phone: user_data.metadata.phone,
-        city: user_data.metadata.city,
-        lang: user_data.metadata.lang,
-        photo: user_data.metadata.photo,
+    Promise.all([this.fetchPosts(), this.fetchUser()]).then(
+      ([posts, user_data]) => {
+        user_data = this.extractFirstObject(user_data);
+        this.posts = posts.objects;
+        this.user = {
+          name: user_data.metadata.name,
+          status: user_data.metadata.status,
+          email: user_data.metadata.email,
+          phone: user_data.metadata.phone,
+          city: user_data.metadata.city,
+          lang: user_data.metadata.lang,
+          photo: user_data.metadata.photo,
+        };
+        this.isLoaded = true;
+        this.$nextTick(() => document.body.classList.remove("loading"));
       }
-      this.isLoaded = true;
-      this.$nextTick(() => document.body.classList.remove("loading"));
-    });
+    );
   },
 };
 </script>

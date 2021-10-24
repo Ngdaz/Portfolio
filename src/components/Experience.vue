@@ -3,27 +3,27 @@
     <AnimateOnVisible name="fadeDown" :duration="1">
       <Title
         class="title"
-        :title="content.metadata.title"
-        :description="content.metadata.description"
+        title="EXPERIENCE"
+        description="PROFESSIONAL AND ACADEMIC"
       />
     </AnimateOnVisible>
 
-	<AnimateOnVisible name="fadeUp" :duration="1">
-		<div class="container-fluid">
-			<div class="row">
-				<ExperienceColumn
-					:posts="content.metadata.academic"
-					title="Education"
-					class="col-12 col-md left"
-				/>
-				<ExperienceColumn
-					:posts="content.metadata.professional"
-					title="Professional"
-					class="col-12 col-md right"
-				/>
-			</div>
-		</div>
-	</AnimateOnVisible>
+    <AnimateOnVisible name="fadeUp" :duration="1">
+      <div class="container-fluid">
+        <div class="row">
+          <ExperienceColumn
+            :posts="data.academic"
+            title="Education"
+            class="col-12 col-md left"
+          />
+          <ExperienceColumn
+            :posts="data.professional"
+            title="Professional"
+            class="col-12 col-md right"
+          />
+        </div>
+      </div>
+    </AnimateOnVisible>
   </section>
 </template>
 
@@ -34,10 +34,55 @@ import ExperienceColumn from "./ExperienceColumn.vue";
 export default {
   name: "Experience",
   props: ["content"],
+  data() {
+    return {
+      data: {
+        academic: [
+          {
+            year: "2020 - Now",
+            title: "Bachelor’s degree",
+            content: "Ha Noi University",
+          },
+          {
+            year: "2017 - 2020",
+            title: "Bachelor’s degree",
+            content: "University of science and technology of Ha Noi",
+          },
+          {
+            year: "2014 - 2017",
+            title: "Student",
+            content: "Le Quy Dong Ha Noi Hight School",
+          }
+        ],
+        professional: [
+          {
+            year: "2020 - Now",
+            title: "Employee",
+            content: "LEARNING EXPERIENCE OFFICER ( TA SUP AND ADMIN)",
+          },
+          {
+            year: "Nov 2019",
+            title: "Delegate",
+            content: "Participated in Scientific seminar: Breakthroughs in Sysmex diagnostic solution",
+          },
+          {
+            year: "June 2018 - Aug 2018",
+            title: "Member",
+            content: "Volunteers for Department of Customer services of Vietnam National Children's Hospital",
+          },
+          {
+            year: "March 2018",
+            title: "Supporter",
+            content: "Participated in USTH open day for students ",
+          }
+        ]
+      },
+    };
+  },
   components: {
     Title,
-    ExperienceColumn
-  }
+    ExperienceColumn,
+  },
 };
 </script>
 
@@ -47,7 +92,13 @@ export default {
 $linear: map-get($colors, dark);
 
 #experience {
-  background-color: lighten(map-get($colors, primary), 5%);
+  // background-color: lighten(map-get($colors, primary), 5%);
+   background-image: url("../assets/img/bg.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 72%;
 }
 
 .title {
@@ -74,14 +125,14 @@ $linear: map-get($colors, dark);
     margin-top: 20px;
   }
   .left:before {
-    content : "";
+    content: "";
     position: absolute;
-    left    : 20%;
-    bottom  : 0;
-    height  : 2px;
-    width   : 60%;  /* or 100px */
-    border-bottom:2px solid $linear;
-}
+    left: 20%;
+    bottom: 0;
+    height: 2px;
+    width: 60%; /* or 100px */
+    border-bottom: 2px solid $linear;
+  }
 }
 
 /deep/ .text-wrapper {

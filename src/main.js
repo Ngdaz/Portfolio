@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue';
 import App from './App.vue'
-
+import Typewriter from 'vue-typewriter'
 import AnimateOnVisible from "./components/AnimateOnVisible.vue"
 
 Vue.use(BootstrapVue)
@@ -9,6 +9,7 @@ Vue.use(BootstrapVue)
 import VueTimeline from "@growthbunker/vuetimeline";
 
 Vue.use(VueTimeline);
+Vue.use(Typewriter);
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCopyright} from '@fortawesome/free-solid-svg-icons'

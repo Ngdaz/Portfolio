@@ -13,8 +13,8 @@ export default {
     name: 'Photo',
     props: ['user'],
     methods: {
-        getImgUrl(img) {
-            return require('../assets/img/'+img);
+        getImgUrl() {
+            return require('../assets/img/photo.jpg');
         },
     },
 }

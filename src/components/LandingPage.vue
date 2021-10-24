@@ -1,13 +1,22 @@
- <template>
+<template>
   <header class="header parallax">
     <div class="name">
       <div class="wrapper-name">
         <AnimateOnVisible name="fadeDown" ::duration="1">
-          <h1>{{ user.name }}</h1>
+          <h1>Pham Minh Anh</h1>
         </AnimateOnVisible>
         <hr />
         <AnimateOnVisible name="fadeUp" ::duration="1">
-          <p>{{ user.status }}</p>
+          <div class="text-center">
+            <typewriter
+            class="type-w"
+            :speed="300"
+            :full-erase="true"
+            :interval="400"
+            :words="['You only live once, but if you do it right, once is enough. ', ' Everything you can imagine is real.']"
+          >
+          </typewriter>
+          </div>
         </AnimateOnVisible>
       </div>
     </div>
@@ -17,7 +26,7 @@
 <script>
 export default {
   name: "LandingPage",
-  props: ["user"]
+  props: ["user"],
 };
 </script>
 
@@ -60,6 +69,13 @@ export default {
   }
 
   p {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 5px auto;
+    color: whitesmoke;
+  }
+
+  .type-w {
     font-size: 1.5rem;
     text-align: center;
     margin: 5px auto;

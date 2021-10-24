@@ -16,11 +16,11 @@
           <font-awesome-icon class="icon" :icon="['fab', 'linkedin']" />
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a :href="links.metadata.github" target="_blank">
           <font-awesome-icon class="icon" :icon="['fab', 'github-square']" />
         </a>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>

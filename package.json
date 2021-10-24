@@ -5,14 +5,19 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
         "lint": "vue-cli-service lint"
     },
+    "start": "node server.js" ,
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
         "@fortawesome/free-brands-svg-icons": "^5.15.3",
         "@fortawesome/free-solid-svg-icons": "^5.15.3",
         "@fortawesome/vue-fontawesome": "^2.0.2",
         "@growthbunker/vuetimeline": "^0.1.17",
+        "@types/express-serve-static-core": "^4.17.24",
         "bootstrap": "^4.6.0",
         "core-js": "^3.9.1",
         "cosmicjs": "^3.3.1",
@@ -20,6 +25,7 @@
         "vue": "^2.6.12",
         "vue-carousel": "^0.18.0",
         "vue-style-loader": "^4.1.3",
+        "vue-typewriter": "^2.2.1",
         "vue2-animate": "^2.1.4"
     },
     "devDependencies": {
