@@ -2,7 +2,7 @@
   <div>
     <div class="photo">
         <a>
-            <img :src="getImgUrl(user.photo)" alt="photo"/>
+            <img src="../assets/img/photo.jpg" alt="photo"/>
         </a>
     </div>
   </div>
