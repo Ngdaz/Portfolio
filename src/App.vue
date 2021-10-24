@@ -19,7 +19,7 @@ import Skills from "./components/Skills.vue";
 // import Projects from "./components/Projects.vue";
 import Footer from "./components/Footer.vue";
 
-import { bucket } from "./cosmic.js";
+// import { bucket } from "./cosmic.js";
 
 export default {
   name: "App",
@@ -54,33 +54,33 @@ export default {
       },
     },
   }),
-  methods: {
-    fetchPosts() {
-      return bucket.getObjects({
-        type: "portfolio-contents",
-        props: "slug,title,metadata",
-      });
-    },
-    fetchUser() {
-      return bucket.getObjects({
-        type: "portfolio-contents",
-        q: "user-data",
-        props: "slug,title,metadata",
-      });
-    },
-    fetchObjectTypes() {
-      return bucket.getObjectTypes();
-    },
-    findSlug(slug) {
-      return this.posts.find((item) => {
-        return item.slug === slug;
-      });
-    },
-    extractFirstObject(objects) {
-      if (objects.objects == null) return void 0;
-      else return objects.objects[0];
-    },
-  },
+  // methods: {
+  //   fetchPosts() {
+  //     return bucket.getObjects({
+  //       type: "portfolio-contents",
+  //       props: "slug,title,metadata",
+  //     });
+  //   },
+  //   fetchUser() {
+  //     return bucket.getObjects({
+  //       type: "portfolio-contents",
+  //       q: "user-data",
+  //       props: "slug,title,metadata",
+  //     });
+  //   },
+  //   fetchObjectTypes() {
+  //     return bucket.getObjectTypes();
+  //   },
+  //   findSlug(slug) {
+  //     return this.posts.find((item) => {
+  //       return item.slug === slug;
+  //     });
+  //   },
+  //   extractFirstObject(objects) {
+  //     if (objects.objects == null) return void 0;
+  //     else return objects.objects[0];
+  //   },
+  // },
   // created() {
   //   document.body.classList.add("loading");
   //   Promise.all([this.fetchPosts(), this.fetchUser()]).then(
